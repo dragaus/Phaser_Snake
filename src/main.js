@@ -1,5 +1,6 @@
 //Here we will import every scene its needed in this game
 import Bootloader from './bootloader.js';
+import Game from './scenes/game.js';
 
 //This class will have all the information for the Phaser game configuration and initialization
 //In the scene parameter we find an array this array will hold all the scenes that we can access
@@ -15,7 +16,7 @@ const config = {
     physics:{
         default: 'arcade',
     },
-    scene:[Bootloader]
+    scene:[Bootloader, Game]
 }
 
 new Phaser.Game(config);

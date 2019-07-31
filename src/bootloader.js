@@ -5,7 +5,11 @@ class Bootloader extends Phaser.Scene{
     }
 
     preload(){
-        console.log('this is bootloader')
+        this.load.image('food_0', 'assets/sprites/elements/Food_0.png');
+
+        this.load.on('complete',()=>{
+            this.scene.start('Game');
+        })
     }
 }
 

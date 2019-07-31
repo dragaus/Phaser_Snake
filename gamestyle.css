@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*This will help to center all the content in the body including our phaser canvas */
+body{
+    display: flex;
+    justify-content: center;
+    background-color: #4c4c4c;
+}
+
+/*This affect directly in the position of our game canvas*/
+#container{
+    margin-top: 260px;
+    transform: scale(2);
+}

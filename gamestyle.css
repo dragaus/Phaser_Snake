@@ -12,6 +12,6 @@ body{
 
 /*This affect directly in the position of our game canvas*/
 #container{
-    margin-top: 260px;
+    margin-top: 200px;
     transform: scale(2);
 }

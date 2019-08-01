@@ -1,3 +1,7 @@
+//Import of every element will be used in the scene
+import Button from '../gameobjects/button.js';
+import Loader from '../loader.js';
+
 //This class will manage the game over and send you back to the main menu
 class GameOver extends Phaser.Scene{
     constructor(){
@@ -5,6 +9,15 @@ class GameOver extends Phaser.Scene{
     }
 
     preload(){
+        this.button = new Button(this,()=>Loader.loadScene(this, 'Game'),{
+            textOfButton: 'PLAY AGAIN'
+        })
+    }
+
+    create(){
+        //Stops the over position of the scene ui wich held the score inside the game
+        this.scene.stop('UI');
+
         //This is how we add a game text with bitmap font
         //This bit map only contains Uppercase characters thats why all the texts should be written in Uppercase
         //First we set the x position, then the y position

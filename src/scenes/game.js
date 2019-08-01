@@ -25,6 +25,8 @@ class Game extends Phaser.Scene{
         this.directionByKey('keydown_UP', 'up');
         this.directionByKey('keydown_DOWN', 'down');
 
+        //This add a physics collision to any member of the group food inside our Food script
+        //this way we only have to call the function once instead of adding it every time
         this.physics.add.collider(this.snake.body[0], this.Food.food, ()=>{
             this.Food.createFood();
             this.snake.grow();

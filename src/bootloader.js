@@ -18,6 +18,9 @@ class Bootloader extends Phaser.Scene{
 
         //Here we load the UI elements
         this.load.image('scoreboard', 'assets/sprites/UI/scoreboard.png');
+        this.load.image('button', 'assets/sprites/UI/button.png');
+        this.load.image('smallButton', 'assets/sprites/UI/button_small.png');
+        this.load.image('return', 'assets/sprites/UI/return.png');
 
         //This will load a json and image needed to use bitmap for fonts
         this.load.json('fontJSON', './assets/font/font.json'); 
@@ -33,7 +36,7 @@ class Bootloader extends Phaser.Scene{
             this.cache.bitmapFont.add('pixel', Phaser.GameObjects.RetroFont.Parse(this, fontJSON)); 
 
             //Create the first scene after loading
-            this.scene.start('Game');
+            this.scene.start('GameOver');
         })
     }
 }

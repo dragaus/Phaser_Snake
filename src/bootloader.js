@@ -36,7 +36,7 @@ class Bootloader extends Phaser.Scene{
             this.cache.bitmapFont.add('pixel', Phaser.GameObjects.RetroFont.Parse(this, fontJSON)); 
 
             //Create the first scene after loading
-            this.scene.start('GameOver');
+            this.scene.start('Menu');
         })
     }
 }

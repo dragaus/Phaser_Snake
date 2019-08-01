@@ -6,7 +6,10 @@ class Bootloader extends Phaser.Scene{
 
     preload(){
         //Here we load the possible food for the snake
-        this.load.image('food_0', 'assets/sprites/elements/Food_0.png');
+        for(let i = 0; i < 4; i++){
+            var number = i;
+            this.load.image(`food_${number}`, `assets/sprites/elements/Food_${number}.png`);
+        }
 
         //Here we load the parts of the snake
         this.load.image('head', 'assets/sprites/elements/snake_0.png');

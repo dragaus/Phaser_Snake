@@ -1,6 +1,5 @@
 //Import of every element will be used in the scene
-import Button from '../gameobjects/button.js';
-import Loader from '../loader.js';
+import ButtonLoader from '../gameobjects/buttonloader.js';
 
 //This class will manage the game over and send you back to the main menu
 class GameOver extends Phaser.Scene{
@@ -9,7 +8,8 @@ class GameOver extends Phaser.Scene{
     }
 
     preload(){
-        this.button = new Button(this,()=>Loader.loadScene(this, 'Game'),{
+        //This how we load the button
+        this.button = new ButtonLoader(this,'Game',{
             textOfButton: 'PLAY AGAIN'
         })
     }

@@ -1,6 +1,3 @@
-//Import of every element will be used in the scene
-import Loader from '../loader.js';
-
 //This is the class snake this is the one that will handle all the sanke related issues
 class Snake{
 
@@ -80,7 +77,7 @@ class Snake{
 
     //This will send to the game over scene
     gameOver(){
-        Loader.loadScene(this.scene, 'GameOver');
+        this.scene.scene.start('GameOver');
     }
 
     //this method is used to set the initial body parts of the snake

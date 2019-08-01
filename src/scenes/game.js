@@ -20,6 +20,11 @@ class Game extends Phaser.Scene{
         this.directionByKey('keydown_LEFT', 'left');
         this.directionByKey('keydown_UP', 'up');
         this.directionByKey('keydown_DOWN', 'down');
+
+        this.physics.add.collider(this.snake.body[0], this.Food.food, ()=>{
+            this.Food.createFood();
+            this.snake.grow();
+        })
     }
 
     update(time){

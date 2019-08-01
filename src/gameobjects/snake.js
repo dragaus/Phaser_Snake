@@ -19,6 +19,8 @@ class Snake{
         this.newDir = 'up';
         this.timer = 0;
         this.movingSpeed = 200;
+        this.maxMovingSpeed = 50;
+        this.speedIncrease = 10;
 
         //here we add the head of the sanke
         this.pushABodyPart('head');
@@ -29,6 +31,53 @@ class Snake{
         //finally we add the tail to the snake
         this.pushABodyPart('tail');
 
+        //This is how we set that if the head hit collide any part of the body the game ends
+        for(let i=0; i < this.initialBodyParts;i++){
+            this.scene.physics.add.collider(this.body[0], this.body[i], ()=> this.gameOver());
+        }
+
+    }
+
+    //This is call when a snake eats something and make it one body part longer
+    grow(){
+        //We get the tail to change the angle of the new body part
+        const obj = this.body[this.body.length-1];
+
+        //we create a new object and set it before the tail
+        const newObj = this.scene.physics.add.image(obj.x, obj.y, 'body');
+        this.body.splice(this.body.length - 2, 0, newObj);
+
+        //Set the angle as same as the tail
+        newObj.angle = this.body[this.body.length-2].angle;
+
+        //And we add the possibility to be hited by the head and finish the game
+        this.scene.physics.add.collider(this.body[0] , newObj, ()=> this.gameOver());
+
+        //Here we add speed to the snake proportionally to the number of food eat before
+        this.movingSpeed -= this.speedIncrease;       
+        if(this.movingSpeed > 100)
+        {
+            this.speedIncrease = 10;
+        }
+        else if(this.speedIncrease > 60)
+        {
+            this.speedIncrease = 5;
+        }
+        else
+        {
+            this.speedIncrease = 2;
+        }
+
+        //we set the maximum speed for the game
+        if(this.movingSpeed < this.maxMovingSpeed){
+            this.movingSpeed = this.maxMovingSpeed;
+            console.log('this is max speed');
+        }
+    }
+
+    //This will send to the game over scene
+    gameOver(){
+        this.scene.scene.start('GameOver');
     }
 
     //this method is used to set the initial body parts of the snake

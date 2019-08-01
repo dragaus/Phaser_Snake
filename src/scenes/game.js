@@ -15,6 +15,10 @@ class Game extends Phaser.Scene{
     }
 
     create(){
+        //add a scene that overlaps the current scene
+        this.scene.launch('UI');
+        const sceneUi = this.scene.get('UI');
+
         //this is how we can add to the keys a value
         this.directionByKey('keydown_RIGHT', 'right');
         this.directionByKey('keydown_LEFT', 'left');
@@ -24,6 +28,7 @@ class Game extends Phaser.Scene{
         this.physics.add.collider(this.snake.body[0], this.Food.food, ()=>{
             this.Food.createFood();
             this.snake.grow();
+            sceneUi.addScore();
         })
     }
 

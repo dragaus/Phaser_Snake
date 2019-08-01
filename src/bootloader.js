@@ -16,6 +16,9 @@ class Bootloader extends Phaser.Scene{
         this.load.image('body', 'assets/sprites/elements/snake_1.png');
         this.load.image('tail', 'assets/sprites/elements/snake_2.png');
 
+        //Here we load the UI elements
+        this.load.image('scoreboard', 'assets/sprites/UI/scoreboard.png');
+
         //This will load a json and image needed to use bitmap for fonts
         this.load.json('fontJSON', './assets/font/font.json'); 
         this.load.image('font', './assets/font/font.png'); 

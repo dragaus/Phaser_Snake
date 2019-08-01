@@ -2,6 +2,7 @@
 import Bootloader from './bootloader.js';
 import Game from './scenes/game.js';
 import GameOver from './scenes/gameover.js';
+import UI from './scenes/ui.js';
 
 //This class will have all the information for the Phaser game configuration and initialization
 //In the scene parameter we find an array this array will hold all the scenes that we can access
@@ -17,7 +18,7 @@ const config = {
     physics:{
         default: 'arcade',
     },
-    scene:[Bootloader, Game, GameOver]
+    scene:[Bootloader, Game, GameOver, UI]
 }
 
 new Phaser.Game(config);

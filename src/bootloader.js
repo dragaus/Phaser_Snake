@@ -16,8 +16,20 @@ class Bootloader extends Phaser.Scene{
         this.load.image('body', 'assets/sprites/elements/snake_1.png');
         this.load.image('tail', 'assets/sprites/elements/snake_2.png');
 
+        //This will load a json and image needed to use bitmap for fonts
+        this.load.json('fontJSON', './assets/font/font.json'); 
+        this.load.image('font', './assets/font/font.png'); 
+
         //Once all the loading is done we move to next part
         this.load.on('complete',()=>{
+
+            //This is how we get a font by bitmap its generated after all the loading and before the change of scene
+            //the json contains all the information of how the image should be used to create what Character and
+            // the bit map font generate a font saved and which name will have inside the project
+            const fontJSON = this.cache.json.get('fontJSON'); 
+            this.cache.bitmapFont.add('pixel', Phaser.GameObjects.RetroFont.Parse(this, fontJSON)); 
+
+            //Create the first scene after loading
             this.scene.start('Game');
         })
     }

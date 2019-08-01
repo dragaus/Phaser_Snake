@@ -7,7 +7,7 @@ class Snake{
 
         //we create an array where all the parts of the snake will be added
         //and determine the number of body parts the snake will have at first
-        this.initialBodyParts = 3;
+        this.initialBodyParts = 5;
         this.body = [];
 
         //we set the initial position of the head and this will help us to set the parts of the body correctly

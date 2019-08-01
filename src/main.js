@@ -4,6 +4,7 @@ import Credits from './scenes/credits.js';
 import Game from './scenes/game.js';
 import GameOver from './scenes/gameover.js';
 import Menu from './scenes/menu.js';
+import SplashScren from './scenes/splashscreen.js';
 import UI from './scenes/ui.js';
 
 //This class will have all the information for the Phaser game configuration and initialization
@@ -20,7 +21,7 @@ const config = {
     physics:{
         default: 'arcade',
     },
-    scene:[Bootloader, Credits, Menu, Game, GameOver, UI]
+    scene:[Bootloader, Credits, Menu, Game, GameOver, SplashScren, UI]
 }
 
 new Phaser.Game(config);

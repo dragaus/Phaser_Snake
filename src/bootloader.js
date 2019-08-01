@@ -5,6 +5,15 @@ class Bootloader extends Phaser.Scene{
     }
 
     preload(){
+        //This will set the background to black
+        this.cameras.main.setBackgroundColor('#000000');
+
+        //Load audio
+        this.load.audio('barricaSound', 'assets/sounds/audio/Barrica Games.mp3');
+
+        //This loads the logo
+        this.load.image('BarricaGames', 'assets/sprites/logo/Barrica_Games.png');
+
         //Here we load the possible food for the snake
         for(let i = 0; i < 4; i++){
             var number = i;
@@ -36,7 +45,7 @@ class Bootloader extends Phaser.Scene{
             this.cache.bitmapFont.add('pixel', Phaser.GameObjects.RetroFont.Parse(this, fontJSON)); 
 
             //Create the first scene after loading
-            this.scene.start('Menu');
+            this.scene.start('SplashScreen');
         })
     }
 }

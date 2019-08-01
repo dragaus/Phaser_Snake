@@ -10,6 +10,9 @@ class Bootloader extends Phaser.Scene{
 
         //Load audio
         this.load.audio('barricaSound', 'assets/sounds/audio/Barrica Games.mp3');
+        this.load.audio('click', 'assets/sounds/sfx/click.mp3');
+        this.load.audio('dead', 'assets/sounds/sfx/dead.mp3');
+        this.load.audio('eat', 'assets/sounds/sfx/eat.mp3');
 
         //This loads the logo
         this.load.image('BarricaGames', 'assets/sprites/logo/Barrica_Games.png');
@@ -45,7 +48,7 @@ class Bootloader extends Phaser.Scene{
             this.cache.bitmapFont.add('pixel', Phaser.GameObjects.RetroFont.Parse(this, fontJSON)); 
 
             //Create the first scene after loading
-            this.scene.start('SplashScreen');
+            this.scene.start('Menu');
         })
     }
 }

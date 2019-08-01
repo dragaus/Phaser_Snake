@@ -10,6 +10,9 @@ class Snake{
         this.initialBodyParts = 3;
         this.body = [];
 
+        //audio of the snake everytime it goes bigger 
+        this.audioEat = this.scene.sound.add('eat');
+
         //we set the initial position of the head and this will help us to set the parts of the body correctly
         this.initialPosx = this.scene.sys.game.config.width-8 -16;
         this.initialPosy = this.scene.sys.game.config.height -8 -(16 * this.initialBodyParts);
@@ -40,6 +43,9 @@ class Snake{
 
     //This is call when a snake eats something and make it one body part longer
     grow(){
+        //Play audio
+        this.audioEat.play();
+
         //We get the tail to change the angle of the new body part
         const obj = this.body[this.body.length-1];
 
@@ -49,6 +55,10 @@ class Snake{
 
         //Set the angle as same as the tail
         newObj.angle = this.body[this.body.length-2].angle;
+        
+        //Set tail in order
+        obj.angle = newObj.angle;
+        obj.XY = newObj.XY;
 
         //And we add the possibility to be hited by the head and finish the game
         this.scene.physics.add.collider(this.body[0] , newObj, ()=> this.gameOver());
@@ -77,6 +87,10 @@ class Snake{
 
     //This will send to the game over scene
     gameOver(){
+        //we create an instance of the sound and play it
+        var deadSound = this.scene.sound.add('dead');
+        deadSound.play();
+        
         this.scene.scene.start('GameOver');
     }
 

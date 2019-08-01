@@ -16,7 +16,9 @@ class Button{
         this.scene = scene;
         this.normalColor = `0x${normalColor}`;
         this.hoverColor = `0x${hoverColor}`;
+        this.functionOfButton = functionOfButton;
 
+        this.click = this.scene.sound.add('click');
         //We add the button in the scene
         this.button = this.scene.add.image(x, y, kindOfButton).setOrigin(xAnchor, yAnchor);
         //We personolize the button with a tint to be able to create different color of buttons
@@ -24,7 +26,7 @@ class Button{
         //We make the button interactable
         this.button.setInteractive();
         //We add events to diferent events
-        this.button.on('pointerdown', functionOfButton, this);  
+        this.button.on('pointerdown', this.functionAndSound, this);  
         this.button.on('pointerover', this.changeColorOn, this);
         this.button.on('pointerout', this.changeColorOut, this);
 
@@ -37,6 +39,12 @@ class Button{
         if(secondImage != ''){
             this.scene.add.image(this.button.x, this.button.y, secondImage).setOrigin(xAnchor, yAnchor);
         }
+    }
+
+    //Make button sound
+    functionAndSound(){     
+        this.click.play();
+        this.click.once('complete', ()=>this.functionOfButton());
     }
 
     //This is used to return to normal color

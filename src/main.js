@@ -1,5 +1,6 @@
 //Here we will import every scene its needed in this game
 import Bootloader from './bootloader.js';
+import Credits from './scenes/credits.js';
 import Game from './scenes/game.js';
 import GameOver from './scenes/gameover.js';
 import Menu from './scenes/menu.js';
@@ -19,7 +20,7 @@ const config = {
     physics:{
         default: 'arcade',
     },
-    scene:[Bootloader, Menu, Game, GameOver, UI]
+    scene:[Bootloader, Credits, Menu, Game, GameOver, UI]
 }
 
 new Phaser.Game(config);

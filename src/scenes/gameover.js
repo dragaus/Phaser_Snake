@@ -9,7 +9,7 @@ class GameOver extends Phaser.Scene{
 
     preload(){
         //This how we load the button
-        this.button = new ButtonLoader(this,'Game',{
+        this.button = new ButtonLoader(this,'Menu',{
             textOfButton: 'PLAY AGAIN'
         })
     }

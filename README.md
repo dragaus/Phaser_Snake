@@ -2,6 +2,11 @@
 
 >A simple snake game made with [Phaser 3][phsr]
 
+## Motivation
+This proyect is made as a lerning tool about the capabilities of [Phaser 3][phsr].
+
+The intention is that anyone can learn how to write a snake with different options with this framework.
+
 ## Clone this project
 
 How to clone:
@@ -17,9 +22,11 @@ To move the snake you can:
 Use your keyboard arrows in the direction you want.
 <kbd>←</kbd> for left, <kbd>→</kbd> for right, <kbd>↑</kbd> for up, <kbd>↓</kbd> for down
 
-or you can use this letters:
+Use this letters:
 <kbd>A</kbd> for left, <kbd>D</kbd> for right, <kbd>W</kbd> for up, <kbd>S</kbd> for down
 
+Mouse or touch:
+Pressdown in any place of the screen and quickly swipe in the direction you want to go
 
 
 Remember that you cannot move in the same axis at time for example if the snake moves to the right you cannot turn them into the left.

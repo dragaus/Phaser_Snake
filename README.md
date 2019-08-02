@@ -1,4 +1,4 @@
-# Phaser_Snake
+# [Phaser_Snake][pll]
 
 >A simple snake game made with [Phaser 3][phsr]
 
@@ -16,6 +16,11 @@ To move the snake you can:
 
 Use your keyboard arrows in the direction you want.
 <kbd>←</kbd> for left, <kbd>→</kbd> for right, <kbd>↑</kbd> for up, <kbd>↓</kbd> for down
+
+or you can use this letters:
+<kbd>A</kbd> for left, <kbd>D</kbd> for right, <kbd>W</kbd> for up, <kbd>S</kbd> for down
+
+
 
 Remember that you cannot move in the same axis at time for example if the snake moves to the right you cannot turn them into the left.
 
@@ -41,6 +46,7 @@ Transform the wav archives to mp3 with this tool
 
 * **Francisco Castañeda** - Initial work - [dragaus](https://github.com/dragaus)
 
+[pll]: https://barricagames.itch.io/snake
 [phsr]: https://phaser.io/
 [psk]: https://www.piskelapp.com/
 [ttf]: http://ttf2png.ga/

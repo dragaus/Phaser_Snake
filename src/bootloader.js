@@ -49,7 +49,7 @@ class Bootloader extends Phaser.Scene{
 
             //Create the first scene after loading
             this.scene.start('Menu');
-        })
+        });
     }
 }
 

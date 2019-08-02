@@ -15,11 +15,19 @@ const config = {
     width: 512,
     height: 288,
     Type: Phaser.AUTO,
-    parent: container,
+    parent: 'container',
     backgroundColor: '#acd620',
     pixelArt: true,
     physics:{
         default: 'arcade',
+    },
+    //This will make the game responsive to any size of screen
+    scale:{
+        mode: Phaser.Scale.FIT,
+        parent: 'phaser-example',
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        width: 512,
+        height: 288
     },
     scene:[Bootloader, Credits, Menu, Game, GameOver, SplashScren, UI]
 }

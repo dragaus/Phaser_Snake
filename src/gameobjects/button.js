@@ -16,11 +16,14 @@ class Button{
         this.scene = scene;
         this.normalColor = `0x${normalColor}`;
         this.hoverColor = `0x${hoverColor}`;
+        this.unSelectedColor = `0xffffff`;
         this.functionOfButton = functionOfButton;
+        this.xAnchor = xAnchor;
+        this.yAnchor = yAnchor;
 
         this.click = this.scene.sound.add('click');
         //We add the button in the scene
-        this.button = this.scene.add.image(x, y, kindOfButton).setOrigin(xAnchor, yAnchor);
+        this.button = this.scene.add.image(x, y, kindOfButton).setOrigin(this.xAnchor, this.yAnchor);
         //We personolize the button with a tint to be able to create different color of buttons
         this.changeColorOut();
         //We make the button interactable
@@ -37,7 +40,7 @@ class Button{
 
         //We add a second image if its necesary
         if(secondImage != ''){
-            this.scene.add.image(this.button.x, this.button.y, secondImage).setOrigin(xAnchor, yAnchor);
+            this.overImage = this.scene.add.image(this.button.x, this.button.y, secondImage).setOrigin(this.xAnchor, this.yAnchor);
         }
     }
 
@@ -55,6 +58,15 @@ class Button{
     //This is used to put color when a pointer is on
     changeColorOn(){
         this.button.tint = this.hoverColor;
+    }
+
+    addImage(imageToAdd){
+        this.overImage = this.scene.add.image(this.button.x, this.button.y, imageToAdd).setOrigin(this.xAnchor, this.yAnchor);
+        this.overImage.setDepth(1);
+    }
+
+    destroyImage(){
+        this.overImage.destroy();
     }
 }
 

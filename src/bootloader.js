@@ -34,6 +34,7 @@ class Bootloader extends Phaser.Scene{
         this.load.image('smallButton', 'assets/sprites/UI/button_small.png');
         this.load.image('return', 'assets/sprites/UI/return.png');
         this.load.image('config', 'assets/sprites/UI/config.png');
+        this.load.image('tick', 'assets/sprites/UI/selected.png')
 
         //This will load a json and image needed to use bitmap for fonts
         this.load.json('fontJSON', './assets/font/font.json'); 

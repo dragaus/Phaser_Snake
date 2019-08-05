@@ -1,9 +1,15 @@
+//This will load all the needs for the object
+import Keys from '../keys.js';
+
 //This is the class snake this is the one that will handle all the sanke related issues
 class Snake{
 
     //To get the phaser properties we need to pass the scene to this object
     constructor(scene){
         this.scene = scene;
+
+        //This properties will help us to change the game dynamics
+        this.hitTheWalls = Keys.value.hitWalls;
 
         //we create an array where all the parts of the snake will be added
         //and determine the number of body parts the snake will have at first
@@ -166,10 +172,20 @@ class Snake{
                     break;
             }
 
-            //this will make that the snake wrap the canvas
-            //we wrap the snake in the y axis in 32 because eventually there will be a ui element
-            this.body[0].x = Phaser.Math.Wrap(this.body[0].x, 0, this.scene.sys.game.config.width);
-            this.body[0].y = Phaser.Math.Wrap(this.body[0].y, 32, this.scene.sys.game.config.height);
+            //here we check if the hit the walls option is cativated
+            if(this.hitTheWalls){
+                //In case it is we will finish the game if the head became invisble
+                if(this.body[0].x < 0 || this.body[0].x > this.scene.sys.game.config.width || 
+                    this.body[0].y < 32 || this.body[0].y > this.scene.sys.game.config.height){
+                    this.gameOver();
+                }
+            }
+            else{
+                //this will make that the snake wrap the canvas
+                //we wrap the snake in the y axis in 32 because eventually there will be a ui element
+                this.body[0].x = Phaser.Math.Wrap(this.body[0].x, 0, this.scene.sys.game.config.width);
+                this.body[0].y = Phaser.Math.Wrap(this.body[0].y, 32, this.scene.sys.game.config.height);
+            }
 
             //when the condition was match we need to set a new condition to keep the loop
             this.timer = time + this.movingSpeed;

@@ -1,5 +1,6 @@
 //Import elements requiered for this scene
 import ButtonLoader from '../gameobjects/buttonloader.js';
+import Keys from '../keys.js';
 
 //This class will be or main menu
 class Menu extends Phaser.Scene{
@@ -33,6 +34,18 @@ class Menu extends Phaser.Scene{
             xAnchor: 0,
             yAnchor: 0
         });
+
+        //Because we will have save some information to save in diferent places
+        //the easiest way to do that is to save it in a map 
+        //create a json and the recover that map
+        //here we will get the data if we already saved a map
+        if(localStorage.getItem(Keys.direction) != null){
+            Keys.value = JSON.parse(localStorage.getItem(Keys.direction));
+        }
+        //here will save a map for the first time if it doesn't exist
+        else{
+            localStorage.setItem(Keys.direction, JSON.stringify(Keys.value));
+        }
     }
 }
 

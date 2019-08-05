@@ -1,5 +1,6 @@
 //Here we will import every scene its needed in this game
 import Bootloader from './bootloader.js';
+import Config from './scenes/config.js';
 import Credits from './scenes/credits.js';
 import Game from './scenes/game.js';
 import GameOver from './scenes/gameover.js';
@@ -29,7 +30,7 @@ const config = {
         width: 512,
         height: 288
     },
-    scene:[Bootloader, Credits, Menu, Game, GameOver, SplashScren, UI]
+    scene:[Bootloader, Config, Credits, Menu, Game, GameOver, SplashScren, UI]
 }
 
 new Phaser.Game(config);

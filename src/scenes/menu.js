@@ -22,6 +22,17 @@ class Menu extends Phaser.Scene{
             normalColor: 'ff004c',
             hoverColor: 'c9003c'
         });
+
+        this.configButton = new ButtonLoader(this, 'Config',{
+            kindOfButton: 'smallButton',
+            normalColor: '1480d9',
+            hoverColor: '1167ad',
+            secondImage: 'config',
+            x: 5,
+            y: 5,
+            xAnchor: 0,
+            yAnchor: 0
+        });
     }
 }
 

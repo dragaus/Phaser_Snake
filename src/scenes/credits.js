@@ -10,7 +10,7 @@ class Credits extends Phaser.Scene{
 
     preload(){
         //This is a simple return button
-        this.button = new ButtonLoader(this, 'Menu', {
+        this.buttonReturn = new ButtonLoader(this, 'Menu', {
             kindOfButton: 'smallButton',
             secondImage: 'return',
             x: 5,
@@ -20,13 +20,13 @@ class Credits extends Phaser.Scene{
         });
 
         //This buttons are think to send to see more information about you and your proyects
-        this.button = new Button(this, ()=>this.goTo('https://www.linkedin.com/in/francisco-rovira/'), {
+        this.buttonContact = new Button(this, ()=>this.goTo('https://www.linkedin.com/in/francisco-rovira/'), {
             textOfButton: 'CONTACT ME',
             normalColor: '1480d9',
             hoverColor: '1167ad',
             y: (this.sys.game.config.height/5*3),
         });
-        this.button = new Button(this, ()=>this.goTo('https://github.com/dragaus/Phaser_Snake'), {
+        this.buttonGit = new Button(this, ()=>this.goTo('https://github.com/dragaus/Phaser_Snake'), {
             textOfButton: 'GITHUB REPO',
             normalColor: '6e5494',
             hoverColor: '52406e',

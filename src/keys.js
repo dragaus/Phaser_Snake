@@ -2,7 +2,8 @@
 class Keys{
     static direction = 'cnfg';
     static value = {
-        hitWalls : false
+        hitWalls : false,
+        language : 0,
     }
 }
 

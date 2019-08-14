@@ -24,6 +24,9 @@ This is a classic snake game, you will move the head of the snake in the directi
 #### Hit Walls
 This option enable the possibility to hit the walls, to activate this, you only have to go to the configuration button and enable the option.
 
+#### Language
+This will change the language of the game, and makes easy to add more languages, it's simple as just create an js script with an object and translate the texts, thent add that to the possible languages in language.js
+
 
 ## Game Controls
 

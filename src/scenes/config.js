@@ -2,6 +2,7 @@
 import Button from '../gameobjects/button.js';
 import ButtonLoader from '../gameobjects/buttonloader.js';
 import Keys from '../keys.js';
+import Language from '../language.js';
 
 
 //This scene will hold all the possible configurations of the game to change it
@@ -11,6 +12,9 @@ class Config extends Phaser.Scene{
     }
 
     preload(){
+        //Get the current language
+        this.texts = Language.getText(this.scene.key);
+
         //This is a simple return button
         this.buttonReturn = new ButtonLoader(this, 'Menu', {
             kindOfButton: 'smallButton',
@@ -21,12 +25,12 @@ class Config extends Phaser.Scene{
             yAnchor: 0,
         });
 
-        this.add.dynamicBitmapText(this.sys.game.config.width/2, this.sys.game.config.height/5,'pixel', 'CONFIGURATION', 16).setOrigin(0.5);
+        this.title = this.add.dynamicBitmapText(this.sys.game.config.width/2, this.sys.game.config.height/5,'pixel', this.texts.title, 16).setOrigin(0.5);
 
         //This will add a line with an option an will be stored in a local way
-        //We will initializing everithing as is in flase in case this is true later we
+        //We will initializing everithing as is in false in case this is true later we
         //will add the tick into the image
-        this.add.dynamicBitmapText(this.sys.game.config.width/8, this.sys.game.config.height / 10 *4, 'pixel', 'HIT WALLS', 14).setOrigin(0, 0.5);
+        this.hitWalls = this.add.dynamicBitmapText(this.sys.game.config.width/8, this.sys.game.config.height / 20 *8, 'pixel', this.texts.hitWalls, 14).setOrigin(0, 0.5);
         this.buttonHitWalls = new Button(this, ()=>this.changeLocalInfo('hitWalls', this.buttonHitWalls), {
             kindOfButton: 'smallButton',
             x: this.sys.game.config.width/8 * 7,
@@ -37,6 +41,17 @@ class Config extends Phaser.Scene{
             hoverColor: '1167ad',
         });
         this.setLocalInfo(Keys.value.hitWalls,this.buttonHitWalls);
+
+
+        //This will change the language of the game just pressing the button
+        this.language = this.add.dynamicBitmapText(this.sys.game.config.width/8, this.sys.game.config.height/20 *11,'pixel', this.texts.language, 14).setOrigin(0, 0.5);
+        this.changeLanguageButton = new Button(this, ()=>this.changeIndex('language',this.changeLanguageButton), {
+            textOfButton: this.texts.languageButton,
+            x: this.sys.game.config.width/8 * 7,
+            y: this.sys.game.config.height / 20 * 11,
+            normalColor: '1480d9',
+            hoverColor: '1167ad',
+        });
     }
     
     //this will tick a space if the value is true
@@ -66,7 +81,26 @@ class Config extends Phaser.Scene{
         localStorage.setItem(Keys.direction, JSON.stringify(Keys.value));
     }
 
-    create(){
+    //this will help us when we need to change a value in index form
+    //right now is for language only we will change it eventually
+    changeIndex(key,button){
+        if(Keys.value[key] < Language.languageNumber -1){
+            Keys.value[key]++;
+        }
+        else{
+            Keys.value[key] = 0;
+        }
+        this.changeTexts();
+        button.changeText(this.texts.languageButton);
+        localStorage.setItem(Keys.direction, JSON.stringify(Keys.value));
+    }
+
+    //this update the texts in the scene to be in the correct language
+    changeTexts(){
+        this.texts = Language.getText(this.scene.key);
+        this.title.text = this.texts.title;
+        this.hitWalls.text = this.texts.hitWalls;
+        this.language.text = this.texts.language;
     }
 }
 

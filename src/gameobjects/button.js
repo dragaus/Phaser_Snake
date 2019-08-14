@@ -33,15 +33,21 @@ class Button{
         this.button.on('pointerover', this.changeColorOn, this);
         this.button.on('pointerout', this.changeColorOut, this);
 
+
         //We add a text into a button if its necesary
-        if(textOfButton != ''){
-            this.scene.add.dynamicBitmapText(this.button.x, this.button.y, 'pixel', textOfButton, 10).setOrigin(0.5);
+        this.buttonText = this.scene.add.dynamicBitmapText(this.button.x, this.button.y, 'pixel', textOfButton, 10).setOrigin(0.5);
+        if(textOfButton == ''){
+            this.buttonText.destroy();
         }
 
         //We add a second image if its necesary
         if(secondImage != ''){
             this.overImage = this.scene.add.image(this.button.x, this.button.y, secondImage).setOrigin(this.xAnchor, this.yAnchor);
         }
+    }
+
+    changeText(updateText){
+        this.buttonText.text = updateText;
     }
 
     //Make button sound

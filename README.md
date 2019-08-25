@@ -19,6 +19,8 @@ $ git clone https://github.com/dragaus/Phaser_Snake.git
 
 This is a classic snake game, you will move the head of the snake in the direction you want, your objective is to eat as much food as you can, after every meal you give the snake will be grow a little, you have to avoid to hit your own body.
 
+Get the highest score and show it in the high score screen
+
 ### Options
 
 #### Hit Walls

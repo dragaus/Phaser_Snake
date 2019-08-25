@@ -97,7 +97,25 @@ class Snake{
         var deadSound = this.scene.sound.add('dead');
         deadSound.play();
         
-        this.scene.scene.start('GameOver');
+        //The scene that bwill be load next scene in case any of the next conditions is match
+        var nextScene = 'GameOver';
+
+        //If the highscore tables its not set yet we always will add the name
+        if(Keys.value.highScores.length < 9){
+            nextScene = 'AddName';
+        }
+        // in case the table is fill we need to know if the players have a higger vale than the current top values
+        else{
+            for(let i = 0; i < Keys.value.highScores.length;i++){
+                if(Keys.currentScore > Keys.value.highScores[i].score){
+                    nextScene = 'AddName';
+                    break;
+                }
+            }
+        }
+
+        //We go to the scene that its needed in its game
+        this.scene.scene.start(nextScene);
     }
 
     //this method is used to set the initial body parts of the snake

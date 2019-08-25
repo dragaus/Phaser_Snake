@@ -47,7 +47,7 @@ class Config extends Phaser.Scene{
         this.language = this.add.dynamicBitmapText(this.sys.game.config.width/8, this.sys.game.config.height/20 *11,'pixel', this.texts.language, 14).setOrigin(0, 0.5);
         this.changeLanguageButton = new Button(this, ()=>this.changeIndex('language',this.changeLanguageButton), {
             textOfButton: this.texts.languageButton,
-            x: this.sys.game.config.width/8 * 7,
+            x: this.sys.game.config.width/8 * 6,
             y: this.sys.game.config.height / 20 * 11,
             normalColor: '1480d9',
             hoverColor: '1167ad',

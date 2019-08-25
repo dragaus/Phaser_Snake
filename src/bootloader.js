@@ -23,6 +23,9 @@ class Bootloader extends Phaser.Scene{
             this.load.image(`food_${number}`, `assets/sprites/elements/Food_${number}.png`);
         }
 
+        //This will be used to select letters
+        this.load.image('block', 'assets/sprites/UI/block.png');
+
         //Here we load the parts of the snake
         this.load.image('head', 'assets/sprites/elements/snake_0.png');
         this.load.image('body', 'assets/sprites/elements/snake_1.png');

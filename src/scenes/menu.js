@@ -31,14 +31,21 @@ class Menu extends Phaser.Scene{
         //this buttons will send to other scenes
         this.playButton = new ButtonLoader(this, 'Game', {
             textOfButton: this.texts.play,
-            y: this.sys.game.config.height /10 * 7
+            y: this.sys.game.config.height /10 * 5.5
         });
 
         this.playButton = new ButtonLoader(this, 'Credits', {
             textOfButton: this.texts.credits,
-            y: this.sys.game.config.height /10 * 8.5,
+            y: this.sys.game.config.height /10 * 7,
             normalColor: 'ff004c',
             hoverColor: 'c9003c'
+        });
+
+        this.playButton = new ButtonLoader(this, 'HighScore', {
+            textOfButton: this.texts.highScore,
+            y: this.sys.game.config.height /10 * 8.5,
+            normalColor: 'db9812',
+            hoverColor: 'b37c10'
         });
 
         this.configButton = new ButtonLoader(this, 'Config',{

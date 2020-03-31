@@ -1,5 +1,6 @@
 //This will load all the needs for the object
 import Keys from '../keys.js';
+import Position from '../structs/positions.js';
 
 //This is the class snake this is the one that will handle all the sanke related issues
 class Snake{
@@ -87,7 +88,6 @@ class Snake{
         //we set the maximum speed for the game
         if(this.movingSpeed < this.maxMovingSpeed){
             this.movingSpeed = this.maxMovingSpeed;
-            console.log('this is max speed');
         }
     }
 
@@ -208,6 +208,14 @@ class Snake{
             //when the condition was match we need to set a new condition to keep the loop
             this.timer = time + this.movingSpeed;
         }
+    }
+
+    getPositionsOfBody(){
+        let positionsArray = [];
+        this.body.forEach(bodyPart => {
+            positionsArray.push(new Position(bodyPart.x, bodyPart.y));
+        });
+        return positionsArray;
     }
 }
 

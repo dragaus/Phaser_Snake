@@ -1,9 +1,13 @@
 //We import the game objects for this scene
 import Snake from '../gameobjects/snake.js';
 import Food from '../gameobjects/food.js';
+import Rock from '../gameobjects/rock.js';
+import Keys from '../keys.js';
+import Position from "../structs/positions.js";
 
 //This is the class where the most part of the game will be part of it this is our game
 class Game extends Phaser.Scene{
+
     constructor(){
         super('Game');
     }
@@ -12,6 +16,13 @@ class Game extends Phaser.Scene{
         //This is how we add a game object to the scene
         this.snake = new Snake(this);
         this.Food = new Food(this);
+        if(Keys.value.canSpawnRocks) {
+            this.rocksPosition = [];
+            this.Rock = new Rock(this);
+            this.rocksPosition.push(this.Rock.pos);
+        }
+        this.maxAmountOfRocks = 10;
+        this.amountOfRocks = 0;
     }
 
     create(){
@@ -35,10 +46,24 @@ class Game extends Phaser.Scene{
         //This add a physics collision to any member of the group food inside our Food script
         //this way we only have to call the function once instead of adding it every time
         this.physics.add.collider(this.snake.body[0], this.Food.food, ()=>{
-            this.Food.createFood();
             this.snake.grow();
+            this.Food.createFood();
             sceneUi.addScore();
+            //If the player is playing with rocks activated here we 
+            if(Keys.value.canSpawnRocks){
+                if(this.amountOfRocks < this.maxAmountOfRocks && Phaser.Math.Between(0,2) === 0){
+                    this.Rock.createRock();
+                }
+            }
         });
+
+        //This create rocks physics if the players wants to play with the rock variation
+        if(Keys.value.canSpawnRocks)
+        {
+            this.physics.add.collider(this.snake.body[0], this.Rock.rock, () =>{
+                this.snake.gameOver();
+            });
+        }
     }
 
     update(time){
@@ -86,6 +111,34 @@ class Game extends Phaser.Scene{
             //we get the snake in the scene and change its direction
             scene.snake.changeDir(newDir);
         });
+    }
+
+    getRandomPos() {
+        //we select a random number inside the screen to produce a new item
+        //that will be clapped every 16px starting at 8 in the width and in 48 in the height
+        let x = Phaser.Math.Between(0, this.sys.game.config.width);
+        if(x % 16 != 8){
+            x -= x % 16;
+            x += 8;
+        }
+        let y = Phaser.Math.Between(32, this.sys.game.config.height);
+        if(y % 16 != 8){
+            y -= y % 16;
+            y += 8;
+        }
+
+        return new Position(x, y);
+    }
+
+    isInSnakePos(positionToCheck) {
+        let arrayToChekPositions = this.snake.getPositionsOfBody();
+
+        arrayToChekPositions.forEach(position => {
+            if(positionToCheck.x === position.x && positionToCheck.y === position.y){
+                return true;
+            }
+        });
+        return false;
     }
 
 }

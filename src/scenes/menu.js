@@ -16,6 +16,13 @@ class Menu extends Phaser.Scene{
         //here we will get the data if we already saved a map
         if(localStorage.getItem(Keys.direction) != null){
             Keys.value = JSON.parse(localStorage.getItem(Keys.direction));
+            if(Keys.value.highScores === undefined)
+            {
+                Keys.value.highScores = [];
+            }
+            if(Keys.value.canSpawnRocks === undefined){
+                Keys.value.canSpawnRocks = true;
+            }
         }
         //here will save a map for the first time if it doesn't exist
         else{

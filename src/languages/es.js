@@ -6,6 +6,7 @@ class ES{
     static Config = {
         title: 'CONFIGURACION',
         hitWalls: 'MUROS ACTIVOS',
+        createRocks: 'AGREGAR PIEDRAS',
         language: 'IDIOMA',
         languageButton: 'ESPANOL'
     }

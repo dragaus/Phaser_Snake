@@ -6,7 +6,7 @@
 /*This will help to center all the content in the body including our phaser canvas */
 body{
     display: flex;
-    background-color: #4c4c4c;
+    background-color: #7fb414;
 }
 
 /*This affect directly in the position of our game canvas*/

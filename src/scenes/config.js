@@ -30,11 +30,12 @@ class Config extends Phaser.Scene{
         //This will add a line with an option an will be stored in a local way
         //We will initializing everithing as is in false in case this is true later we
         //will add the tick into the image
-        this.hitWalls = this.add.dynamicBitmapText(this.sys.game.config.width/8, this.sys.game.config.height / 20 *8, 'pixel', this.texts.hitWalls, 14).setOrigin(0, 0.5);
+        let heightWallsPos = this.sys.game.config.height / 20 *8;
+        this.hitWalls = this.add.dynamicBitmapText(this.sys.game.config.width/8, heightWallsPos, 'pixel', this.texts.hitWalls, 14).setOrigin(0, 0.5);
         this.buttonHitWalls = new Button(this, ()=>this.changeLocalInfo('hitWalls', this.buttonHitWalls), {
             kindOfButton: 'smallButton',
             x: this.sys.game.config.width/8 * 7,
-            y: this.sys.game.config.height / 10 *4,
+            y: heightWallsPos,
             xAnchor: 1,
             yAnchor: 0.5,
             normalColor: '1480d9',
@@ -42,13 +43,26 @@ class Config extends Phaser.Scene{
         });
         this.setLocalInfo(Keys.value.hitWalls,this.buttonHitWalls);
 
+        let heightRocksPos = this.sys.game.config.height / 20 * 11;
+        this.createRocks = this.add.dynamicBitmapText(this.sys.game.config.width/8, heightRocksPos, 'pixel', this.texts.createRocks, 14).setOrigin(0, 0.5);
+        this.buttonRocks = new Button(this, ()=>this.changeLocalInfo('canSpawnRocks', this.buttonRocks), {
+            kindOfButton: 'smallButton',
+            x: this.sys.game.config.width/8 * 7,
+            y: heightRocksPos,
+            xAnchor: 1,
+            yAnchor: 0.5,
+            normalColor: '1480d9',
+            hoverColor: '1167ad',
+        });
+        this.setLocalInfo(Keys.value.canSpawnRocks,this.buttonRocks);
 
         //This will change the language of the game just pressing the button
-        this.language = this.add.dynamicBitmapText(this.sys.game.config.width/8, this.sys.game.config.height/20 *11,'pixel', this.texts.language, 14).setOrigin(0, 0.5);
+        let heightLenguage = this.sys.game.config.height/20 * 14;
+        this.language = this.add.dynamicBitmapText(this.sys.game.config.width/8, heightLenguage,'pixel', this.texts.language, 14).setOrigin(0, 0.5);
         this.changeLanguageButton = new Button(this, ()=>this.changeIndex('language',this.changeLanguageButton), {
             textOfButton: this.texts.languageButton,
             x: this.sys.game.config.width/8 * 6,
-            y: this.sys.game.config.height / 20 * 11,
+            y: heightLenguage,
             normalColor: '1480d9',
             hoverColor: '1167ad',
         });
@@ -100,6 +114,7 @@ class Config extends Phaser.Scene{
         this.texts = Language.getText(this.scene.key);
         this.title.text = this.texts.title;
         this.hitWalls.text = this.texts.hitWalls;
+        this.createRocks.text = this.texts.createRocks;
         this.language.text = this.texts.language;
     }
 }

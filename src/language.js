@@ -12,7 +12,7 @@ class Language{
         switch(Keys.value.language){
             case 0:
                 return EN[pageText];
-            case 1:
+            default:
                 return ES[pageText];
         }
     }

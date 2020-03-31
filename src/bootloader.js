@@ -23,6 +23,12 @@ class Bootloader extends Phaser.Scene{
             this.load.image(`food_${number}`, `assets/sprites/elements/Food_${number}.png`);
         }
 
+        //Here we load the possible obstacles for the snake
+        for(let i = 0; i < 3; i++){
+            var number = i;
+            this.load.image(`rock_${number}`, `assets/sprites/elements/rock_${number}.png`);
+        }
+
         //This will be used to select letters
         this.load.image('block', 'assets/sprites/UI/block.png');
 
@@ -53,7 +59,8 @@ class Bootloader extends Phaser.Scene{
             this.cache.bitmapFont.add('pixel', Phaser.GameObjects.RetroFont.Parse(this, fontJSON)); 
 
             //Create the first scene after loading
-            this.scene.start('Menu');
+            // this.scene.start('SplashScreen');  //This is for production mode
+            this.scene.start('Menu'); //This is for development mode
         });
     }
 }

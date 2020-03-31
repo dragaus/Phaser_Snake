@@ -6,6 +6,7 @@ class EN{
     static Config = {
         title: 'CONFIGURATION',
         hitWalls: 'HIT WALLS',
+        createRocks: 'ADD ROCKS',
         language: 'LANGUAGE',
         languageButton: 'ENGLISH'
     }
